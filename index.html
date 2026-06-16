@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divergence IP — AI Verification Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0F;
+      --surface: #13131A;
+      --surface2: #1A1A24;
+      --accent: #4FFFB0;
+      --accent-dim: rgba(79,255,176,0.12);
+      --accent-border: rgba(79,255,176,0.25);
+      --text: #F0F0F5;
+      --muted: #6B6B80;
+      --border: #1E1E2E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo { color: var(--text); }
+
+    nav a.nav-link {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    nav a.nav-link:hover { color: var(--text); }
+
+    .nav-contact {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent-border);
+      padding: 7px 16px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .nav-contact:hover { background: var(--accent-dim); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .hero-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 5.5vw, 72px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    /* Divergence animation */
+    .diverge-wrap {
+      display: inline-block;
+      position: relative;
+      height: 1.1em;
+      vertical-align: bottom;
+      overflow: hidden;
+      min-width: 320px;
+    }
+
+    .diverge-base {
+      position: absolute;
+      left: 0;
+      color: var(--text);
+      white-space: nowrap;
+      animation: splitUp 4s ease-in-out infinite;
+    }
+
+    .diverge-shadow {
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      white-space: nowrap;
+      animation: splitDown 4s ease-in-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes splitUp {
+      0%, 30%   { transform: translateY(0); opacity: 1; }
+      50%, 80%  { transform: translateY(-60%); opacity: 0.7; }
+      100%      { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes splitDown {
+      0%, 30%   { transform: translateY(0); opacity: 0; }
+      50%, 80%  { transform: translateY(40%); opacity: 0.9; }
+      100%      { transform: translateY(0); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .diverge-base { animation: none; }
+      .diverge-shadow { display: none; }
+    }
+
+    .hero-sub { font-size: 18px; font-weight: 300; color: var(--muted); max-width: 600px; margin-top: 28px; line-height: 1.7; }
+    .hero-sub strong { color: var(--text); font-weight: 400; }
+
+    .hero-bullets {
+      list-style: none;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hero-bullets li {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .hero-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    /* SECTION */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 96px 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    /* WHAT WE DO */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .pillar-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    .pillar h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .pillar p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* PRODUCT */
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .product-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin-bottom: 24px;
+    }
+
+    .product-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .product-positioning {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: 40px;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .product-feature {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 24px;
+    }
+
+    .product-feature h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .product-feature p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    .contact-block {
+      text-align: center;
+      padding: 96px 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-block h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-block p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent-border);
+      padding: 14px 32px;
+      border-radius: 4px;
+      transition: background 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-email:hover { background: var(--accent-dim); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-logo { color: var(--muted); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hero, section { padding-left: 24px; padding-right: 24px; }
+      .hero { padding-top: 100px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      .product-card { padding: 32px 24px; }
+      .diverge-wrap { min-width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Divergence IP</a>
+    <a href="mailto:robert@divergenceip.com" class="nav-contact">Get in touch</a>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-eyebrow">Adversarial AI Infrastructure</p>
+    <h1 class="hero-headline">
+      The signal is in<br>
+      the <span class="diverge-wrap">
+        <span class="diverge-base">divergence.</span>
+        <span class="diverge-shadow">divergence.</span>
+      </span>
+    </h1>
+    <p class="hero-sub" style="margin-bottom: 28px;">Divergence IP builds:</p>
+    <ul class="hero-bullets">
+      <li>Multi-model adversarial panels that surface hallucinations and drift no single model can see in itself</li>
+      <li>Document analysis that maps divergence at the claim level</li>
+      <li>Pre-action verification that intercepts AI agent decisions before execution</li>
+      <li>Human affirmation gates that enforce a cryptographic confirmation trail before any autonomous action is released</li>
+    </ul>
+  </div>
+
+  <section id="about">
+    <p class="section-label">What we do</p>
+    <div class="pillars">
+      <div class="pillar">
+        <p class="pillar-num">01</p>
+        <h3>Multi-Model Convergence</h3>
+        <p>Independent models run adversarially against the same input. Divergence is preserved as a first-class output — never flattened to a single verdict.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">02</p>
+        <h3>Pre-Action Verification</h3>
+        <p>Machine-readable artifacts are verified before downstream consumption. A cryptographic attestation chain ties every verdict to its evidence.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">03</p>
+        <h3>IP Portfolio</h3>
+        <p>Five provisional patents filed covering adversarial convergence architecture, inline pre-action verification, and human affirmation gating for autonomous AI systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="product">
+    <p class="section-label">Flagship Product</p>
+    <div class="product-card">
+      <span class="product-badge">The Arbiter — TA</span>
+      <h2>The divergence map is the output.</h2>
+      <p class="product-positioning">
+        Every competitor runs a single AI against a database. The Arbiter runs an independent adversarial panel against the same document and outputs the divergence — surfacing the drift and hallucinations a single model cannot see in itself. The divergence map is the output. Nothing else does this today.
+      </p>
+      <div class="product-grid">
+        <div class="product-feature">
+          <h4>Adversarial Panel</h4>
+          <p>Multiple independent model families with distinct roles run blind to each other against every document.</p>
+        </div>
+        <div class="product-feature">
+          <h4>Per-Claim Divergence</h4>
+          <p>Output is graded per claim — verified, contested, or unverifiable — not a binary block or allow.</p>
+        </div>
+        <div class="product-feature">
+          <h4>Cryptographic Attestation</h4>
+          <p>Every verdict is signed. The chain from input artifact to panel decision is tamper-evident.</p>
+        </div>
+        <div class="product-feature">
+          <h4>Patent Applications</h4>
+          <p>Built for high-stakes document analysis where a single model's hallucination is not an acceptable failure mode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact-block" id="contact">
+    <h2>Start a conversation.</h2>
+    <p>Licensing inquiries, partnership discussions, and demo requests welcome.</p>
+    <a href="mailto:robert@divergenceip.com" class="contact-email">robert@divergenceip.com</a>
+  </div>
+
+  <footer>
+    <span class="footer-logo">Divergence IP</span>
+    <p>© 2026 Divergence IP LLC · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
