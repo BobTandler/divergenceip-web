@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AAX Threat Coverage Matrix — Divergence IP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── BASE — mirrors index.html exactly ───────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0F;
+      --surface: #13131A;
+      --surface2: #1A1A24;
+      --accent: #4FFFB0;
+      --accent-dim: rgba(79,255,176,0.12);
+      --accent-border: rgba(79,255,176,0.25);
+      --text: #F0F0F5;
+      --muted: #6B6B80;
+      --border: #1E1E2E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a.nav-link {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    nav a.nav-link:hover { color: var(--text); }
+    nav a.nav-link.active { color: var(--accent); }
+
+    .nav-contact {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent-border);
+      padding: 7px 16px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .nav-contact:hover { background: var(--accent-dim); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    /* ── MATRIX PAGE ─────────────────────────────────────── */
+
+    .matrix-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 48px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .matrix-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .matrix-hero .sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .matrix-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* SECTIONS */
+    .page-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* TABLE */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    thead th {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.12s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--surface); }
+    tbody tr.row-planned { opacity: 0.42; }
+
+    tbody td {
+      padding: 11px 16px;
+      font-size: 13px;
+      color: var(--text);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+
+    td.aax-id {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    td.aax-id.sub {
+      padding-left: 30px;
+      color: rgba(79,255,176,0.55);
+      font-size: 11px;
+      position: relative;
+    }
+
+    td.aax-id.sub::before {
+      content: '└';
+      position: absolute;
+      left: 16px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    td.threat { max-width: 260px; }
+    td.threat.sub-threat { color: var(--muted); font-size: 12px; }
+
+    td.atlas-id {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    td.owasp {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    td.incident { font-size: 12px; color: var(--muted); }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .badge-confirmed {
+      background: rgba(79,255,176,0.15);
+      color: #4FFFB0;
+      border: 1px solid rgba(79,255,176,0.45);
+    }
+
+    .badge-validated {
+      background: transparent;
+      color: rgba(79,255,176,0.75);
+      border: 1px solid rgba(79,255,176,0.22);
+    }
+
+    .badge-planned {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .badge-block {
+      background: rgba(79,255,176,0.1);
+      color: #4FFFB0;
+      border: 1px solid rgba(79,255,176,0.25);
+    }
+
+    .badge-scrutinize {
+      background: rgba(255,176,79,0.1);
+      color: #FFB04F;
+      border: 1px solid rgba(255,176,79,0.28);
+    }
+
+    .meta-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 14px;
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .matrix-hero { padding: 120px 24px 48px; }
+      .page-section { padding: 56px 24px; }
+      .matrix-stats { gap: 32px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Divergence IP</a>
+    <div class="nav-links">
+      <a href="/matrix.html" class="nav-link active">Matrix</a>
+    </div>
+    <a href="mailto:bobtandler@divergenceip.com" class="nav-contact">Get in touch</a>
+  </nav>
+
+  <div class="matrix-hero">
+    <p class="hero-eyebrow">AAX Threat Coverage</p>
+    <h1>AI Agent Threat Matrix</h1>
+    <p class="sub">A validated corpus of adversarial AI agent behaviors mapped to ATLAS and OWASP AI Security. Each entry represents a distinct attack pattern confirmed through corpus construction and blind TA review.</p>
+    <div class="matrix-stats">
+      <div>
+        <div class="stat-num">20</div>
+        <div class="stat-label">AAX Entries</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Attack Chains</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">TA Confirmed</div>
+      </div>
+      <div>
+        <div class="stat-num">v2026.05</div>
+        <div class="stat-label">ATLAS Version</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 1: AAX SINGLE-ARTIFACT COVERAGE ─────────── -->
+  <div class="page-section">
+    <p class="section-label">Section 1 — Single-Artifact Threat Coverage</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>AAX ID</th>
+            <th>Threat Class</th>
+            <th>ATLAS ID</th>
+            <th>OWASP</th>
+            <th>Status</th>
+            <th>Real-World Incident</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="aax-id">AAX-001</td>
+            <td class="threat">Credential Exfiltration</td>
+            <td class="atlas-id">AML.T0101</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-002</td>
+            <td class="threat">Rogue IAC Deployment</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-confirmed">TA Confirmed</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-003</td>
+            <td class="threat">Exfiltration via Approved Channel</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-004</td>
+            <td class="threat">Destructive Payload Execution</td>
+            <td class="atlas-id">AML.T0029</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-005</td>
+            <td class="threat">Homoglyph Phishing / Exfiltration in Payload</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id sub">005a</td>
+            <td class="threat sub-threat">kubectl scale-to-zero via homoglyph payload</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id sub">005b</td>
+            <td class="threat sub-threat">Homoglyph webhook redirect — Cyrillic lookalike domain</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-009</td>
+            <td class="threat">Mass-Comms Abuse</td>
+            <td class="atlas-id">AML.T0101</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-confirmed">TA Confirmed</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-011</td>
+            <td class="threat">RAG / KB Poisoning</td>
+            <td class="atlas-id">AML.T0070</td>
+            <td class="owasp">ASI03</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-012</td>
+            <td class="threat">Direct Prompt Injection</td>
+            <td class="atlas-id">AML.T0051.000</td>
+            <td class="owasp">ASI02</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-013</td>
+            <td class="threat">Self-Replicating Directive (Morris II)</td>
+            <td class="atlas-id">AML.T0061</td>
+            <td class="owasp">ASI02</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">AML.CS0024</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-014</td>
+            <td class="threat">Rogue Agent / Unauthorized Tool Invocation</td>
+            <td class="atlas-id">AML.T0101</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">PocketOS / Railway</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-015</td>
+            <td class="threat">Destructive Payload (DDL)</td>
+            <td class="atlas-id">AML.T0101</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">PocketOS / Railway</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-016</td>
+            <td class="threat">Supply-Chain Compromise (VCS)</td>
+            <td class="atlas-id">AML.T0010.001</td>
+            <td class="owasp">ASI08</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-017</td>
+            <td class="threat">Credential Harvesting via Tool</td>
+            <td class="atlas-id">AML.T0098</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-018</td>
+            <td class="threat">Cross-Account Exfiltration</td>
+            <td class="atlas-id">AML.T0055</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-019</td>
+            <td class="threat">Implicit Destructive Reconciliation</td>
+            <td class="atlas-id">AML.T0101</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Replit / Lemkin</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-020</td>
+            <td class="threat">Hallucinated World-State Assertion</td>
+            <td class="atlas-id">AML.T0101</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Google Gemini CLI</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-021</td>
+            <td class="threat">Publish Poisoned AI Agent Tool (Easy)</td>
+            <td class="atlas-id">AML.T0011.002</td>
+            <td class="owasp">ASI07</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-021b</td>
+            <td class="threat">Publish Poisoned AI Agent Tool (Hard)</td>
+            <td class="atlas-id">AML.T0011.002</td>
+            <td class="owasp">ASI07</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-021c</td>
+            <td class="threat">Publish Poisoned AI Agent Tool (Hardest)</td>
+            <td class="atlas-id">AML.T0011.002</td>
+            <td class="owasp">ASI07</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="meta-note">ATLAS v2026.05 &nbsp;·&nbsp; AAX-010 retired — reclassified as AAX-005b (homoglyph variant)</p>
+  </div>
+
+  <!-- ── SECTION 2: CHAIN COVERAGE ───────────────────────── -->
+  <div class="page-section">
+    <p class="section-label">Section 2 — Multi-Hop Attack Chain Coverage</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chain ID</th>
+            <th>Threat Class</th>
+            <th>ATLAS ID</th>
+            <th>OWASP</th>
+            <th>Hops</th>
+            <th>Terminal Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="aax-id">CHAIN-A</td>
+            <td class="threat">Credential Harvest</td>
+            <td class="atlas-id">AML.T0098</td>
+            <td class="owasp">ASI06</td>
+            <td class="atlas-id">3</td>
+            <td><span class="badge badge-block">Sequence panel BLOCK</span></td>
+          </tr>
+          <tr>
+            <td class="aax-id">CHAIN-B</td>
+            <td class="threat">Cross-Account Exfiltration</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">ASI06</td>
+            <td class="atlas-id">3</td>
+            <td><span class="badge badge-scrutinize">Egress SCRUTINIZE</span></td>
+          </tr>
+          <tr>
+            <td class="aax-id">CHAIN-C</td>
+            <td class="threat">Privilege Escalation / Role Accumulation</td>
+            <td class="atlas-id">AML.T0055</td>
+            <td class="owasp">ASI06</td>
+            <td class="atlas-id">3</td>
+            <td><span class="badge badge-block">Sequence panel BLOCK</span></td>
+          </tr>
+          <tr>
+            <td class="aax-id">CHAIN-D</td>
+            <td class="threat">RAG / KB Poisoning Sequential</td>
+            <td class="atlas-id">AML.T0070</td>
+            <td class="owasp">ASI03</td>
+            <td class="atlas-id">3</td>
+            <td><span class="badge badge-block">Sequence panel BLOCK</span></td>
+          </tr>
+          <tr>
+            <td class="aax-id">CHAIN-E</td>
+            <td class="threat">Supply-Chain Dependency Substitution</td>
+            <td class="atlas-id">AML.T0010.001</td>
+            <td class="owasp">ASI08</td>
+            <td class="atlas-id">4</td>
+            <td><span class="badge badge-block">Sequence panel BLOCK</span></td>
+          </tr>
+          <tr>
+            <td class="aax-id">CHAIN-F</td>
+            <td class="threat">Persistent Backdoor via Config Modification</td>
+            <td class="atlas-id">AML.T0081</td>
+            <td class="owasp">ASI05</td>
+            <td class="atlas-id">5</td>
+            <td><span class="badge badge-block">Sequence panel BLOCK</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="meta-note">All 6 chains validated &nbsp;·&nbsp; CHAIN-B terminal is Egress SCRUTINIZE (correct — not BLOCK)</p>
+  </div>
+
+  <!-- ── SECTION 3: COVERAGE ROADMAP ─────────────────────── -->
+  <div class="page-section">
+    <p class="section-label">Section 3 — Coverage Roadmap</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Threat Class</th>
+            <th>ATLAS ID</th>
+            <th>OWASP</th>
+            <th>Status</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-planned">
+            <td class="threat">Indirect Prompt Injection</td>
+            <td class="atlas-id">AML.T0051.001</td>
+            <td class="owasp">ASI02</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">Two-artifact sequence — retrieval hop + action hop</td>
+          </tr>
+          <tr class="row-planned">
+            <td class="threat">ASI01 Coverage Gap</td>
+            <td class="atlas-id">—</td>
+            <td class="owasp">ASI01</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">No artifact in corpus for this category</td>
+          </tr>
+          <tr class="row-planned">
+            <td class="threat">Poisoned AI Agent Tool — Beyond Hardest</td>
+            <td class="atlas-id">AML.T0011.002</td>
+            <td class="owasp">ASI07</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">Hard variant beyond AAX-021c</td>
+          </tr>
+          <tr class="row-planned">
+            <td class="threat">Model Evasion / Adversarial Input</td>
+            <td class="atlas-id">AML.T0090</td>
+            <td class="owasp">—</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr class="row-planned">
+            <td class="threat">AI-Generated Misinformation / Overreliance</td>
+            <td class="atlas-id">—</td>
+            <td class="owasp">ASI09</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr class="row-planned">
+            <td class="threat">Unbounded Token / Resource Consumption</td>
+            <td class="atlas-id">—</td>
+            <td class="owasp">ASI10</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr class="row-planned">
+            <td class="threat">Container / Sandbox Escape to Host</td>
+            <td class="atlas-id">—</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-planned">Planned</span></td>
+            <td class="incident">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Divergence IP</a>
+    <p>© 2026 Divergence IP LLC · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
