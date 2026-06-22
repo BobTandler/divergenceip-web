@@ -441,7 +441,7 @@
             <li>Blocked all 6 chain variants: credential harvest, data exfiltration, privilege escalation, RAG poisoning, supply-chain substitution, persistent backdoor</li>
             <li>Egress policy layer enforces destination-based controls independent of payload semantics</li>
             <li>Human-in-the-loop applied selectively — 96.3% of artifacts clear without operator touch</li>
-            <li>Validated: 18/18 designed-block recall across 320-artifact MITRE ATLAS benchmark</li>
+            <li>Validated: 38/38 designed-block recall across 347-artifact MITRE ATLAS benchmark</li>
           </ul>
         </div>
 
@@ -467,15 +467,15 @@
   <section class="validation">
     <div class="section-inner">
       <p class="section-label">Validated Performance</p>
-      <h2 class="section-title">MITRE ATLAS benchmark — 320 artifacts.</h2>
-      <p class="section-lead">AaaS validated against the authoritative adversarial AI threat framework. Realistic production traffic with adversarial artifacts at realistic intervals — including reconstructed real-world incidents.</p>
+      <h2 class="section-title">MITRE ATLAS benchmark — 347 artifacts.</h2>
+      <p class="section-lead">AaaS validated against the authoritative adversarial AI threat framework. 347-artifact corpus spanning read-only operations, standard deployment sequences, and adversarial threats at realistic intervals — including reconstructed real-world incidents. Benign operational traffic correctly allowed. Adversarial threats blocked.</p>
       <div class="stat-grid">
         <div class="stat-cell">
-          <div class="stat-value">320</div>
+          <div class="stat-value">347</div>
           <div class="stat-label">Artifact benchmark corpus</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">18/18</div>
+          <div class="stat-value">38/38</div>
           <div class="stat-label">Designed-block recall — zero escapes</div>
         </div>
         <div class="stat-cell">
@@ -491,11 +491,11 @@
           <div class="stat-label">Distinct ATLAS techniques covered</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">488ms</div>
-          <div class="stat-label">Panel p50 latency — artifacts routed to reasoning panel</div>
+          <div class="stat-value">883ms</div>
+          <div class="stat-label">Panel p50 latency — 3-carrier strict-unanimity panel</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">$0.0028</div>
+          <div class="stat-value">$0.0044</div>
           <div class="stat-label">Cost per artifact at production throughput</div>
         </div>
         <div class="stat-cell">
