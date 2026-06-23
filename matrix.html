@@ -358,7 +358,7 @@
     <p class="sub">A validated corpus of adversarial AI agent behaviors mapped to ATLAS and OWASP AI Security. Each entry represents a distinct attack pattern confirmed through corpus construction and blind TA review.</p>
     <div class="matrix-stats">
       <div>
-        <div class="stat-num">20</div>
+        <div class="stat-num">30</div>
         <div class="stat-label">AAX Entries</div>
       </div>
       <div>
@@ -560,6 +560,102 @@
             <td><span class="badge badge-validated">Validated</span></td>
             <td class="incident">—</td>
           </tr>
+          <tr>
+            <td class="aax-id">AAX-022</td>
+            <td class="threat">Remote Pipe-to-Shell Execution</td>
+            <td class="atlas-id">AML.T0011</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Supply-chain / IaC deploy-time compromise</td>
+          </tr>
+          <tr>
+            <td class="aax-id sub">022a</td>
+            <td class="threat sub-threat">base64-obfuscated payload</td>
+            <td class="atlas-id">AML.T0011</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id sub">022b</td>
+            <td class="threat sub-threat">hex-obfuscated payload</td>
+            <td class="atlas-id">AML.T0011</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">—</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-023</td>
+            <td class="threat">CI/IaC Untrusted-Input Interpolation (RCE)</td>
+            <td class="atlas-id">AML.T0051.001</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">GitHub Actions expression injection</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-024</td>
+            <td class="threat">Privileged Container / Host-Mount Escape</td>
+            <td class="atlas-id">Empirically Observed</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Confidential — submitted to MITRE ATLAS</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-025</td>
+            <td class="threat">Template Credential Rendering</td>
+            <td class="atlas-id">Empirically Observed</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Confidential — submitted to MITRE ATLAS</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-026</td>
+            <td class="threat">Reverse-Shell / Covert TCP Exfiltration</td>
+            <td class="atlas-id">AML.T0025</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">/dev/tcp credential exfiltration</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-027</td>
+            <td class="threat">Scheduled-Beacon Persistence</td>
+            <td class="atlas-id">AML.T0081</td>
+            <td class="owasp">ASI05</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Cron-based C2 beacon persistence</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-028</td>
+            <td class="threat">Runtime Interception</td>
+            <td class="atlas-id">AML.T0081</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">LD_PRELOAD / binary-shadow sudo wrapper</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-029</td>
+            <td class="threat">DNS Covert-Channel Exfiltration</td>
+            <td class="atlas-id">Empirically Observed</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Confidential — submitted to MITRE ATLAS</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-030</td>
+            <td class="threat">Malicious Webhook / Event-Stream Redirect</td>
+            <td class="atlas-id">AML.T0055</td>
+            <td class="owasp">ASI06</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Repository webhook redirect to attacker</td>
+          </tr>
+          <tr>
+            <td class="aax-id">AAX-031</td>
+            <td class="threat">Agent Context / System-Prompt Exfiltration</td>
+            <td class="atlas-id">Empirically Observed</td>
+            <td class="owasp">Novel</td>
+            <td><span class="badge badge-validated">Validated</span></td>
+            <td class="incident">Confidential — submitted to MITRE ATLAS</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -690,13 +786,6 @@
             <td class="threat">Unbounded Token / Resource Consumption</td>
             <td class="atlas-id">—</td>
             <td class="owasp">ASI10</td>
-            <td><span class="badge badge-planned">Planned</span></td>
-            <td class="incident">—</td>
-          </tr>
-          <tr class="row-planned">
-            <td class="threat">Container / Sandbox Escape to Host</td>
-            <td class="atlas-id">—</td>
-            <td class="owasp">ASI05</td>
             <td><span class="badge badge-planned">Planned</span></td>
             <td class="incident">—</td>
           </tr>
