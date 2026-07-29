@@ -383,14 +383,14 @@
       AI agents are executing irreversible actions without smart oversight. Existing tools inspect individual artifacts in isolation — they don't understand the intent.
     </p>
     <p class="hero-sub">
-      <strong>AaaS asks a first-principles reasoning question to independent models before the action executes, surfacing the attack surface no per-artifact tool can see.</strong>
+      <strong>The Arbiter — our multi-model divergence platform — poses a first-principles reasoning question to independent models before the action executes, surfacing the attack surface no per-artifact tool can see. AaaS deploys The Arbiter as an inline verification gate for agents.</strong>
     </p>
     <ul class="hero-bullets">
       <li>Pre-execution inline verification that intercepts every AI agent tool invocation before it fires</li>
       <li>Multi-model adversarial panel — one dissent halts the chain before the irreversible action executes</li>
       <li>Once flagged, a human has the final say — BLOCK or ALLOW. That decision is cryptographically bound by three-party Ed25519 signature. No token, no release.</li>
-      <li><strong>AaaS is the only system that detects multi-hop chain attacks — where no single hop is malicious, but the aggregate sequence is.</strong></li>
-      <li><strong>PocketOS, Replit, Google Gemini CLI — autonomous agents causing real destruction with no gate. AaaS has stopped 100% of all threats tested — single-artifact threats via the pre-execution panel, multi-hop chains via sequence evaluation.</strong></li>
+      <li><strong>The Arbiter detects multi-hop chain attacks — where no single hop is malicious, but the aggregate sequence is. AaaS applies this capability as an inline agent verification gate.</strong></li>
+      <li><strong>PocketOS, Replit, Google Gemini CLI — autonomous agents causing real destruction with no gate. The Arbiter, deployed via AaaS, has stopped 100% of all threats tested — single-artifact threats via the pre-execution panel, multi-hop chains via sequence evaluation.</strong></li>
     </ul>
     <div class="stat-grid">
       <div class="stat-cell">
@@ -416,11 +416,11 @@
     </div>
   </section>
 
-  <!-- WHAT WE DO -->
+  <!-- HOW THE ARBITER WORKS -->
   <section>
     <div class="section-inner">
-      <p class="section-label">How AaaS Works</p>
-      <h2 class="section-title">AaaS Reasons. Other Tools Match.</h2>
+      <p class="section-label">The Arbiter Technology</p>
+      <h2 class="section-title">The Arbiter Reasons. Other Tools Match.</h2>
       <div class="what-grid">
         <div class="what-card">
           <p class="what-num">01</p>
@@ -455,12 +455,12 @@
 
       <div class="product-grid">
 
-        <!-- AaaS -->
+        <!-- AaaS — The Arbiter Implementation -->
         <div class="product-card primary">
           <span class="product-tag">AaaS · Patent Pending</span>
-          <h3>Arbiter-as-a-Service</h3>
-          <p class="product-hook">Unlike classifiers and pattern-matchers, AaaS poses a first-principles reasoning question to independent models. The divergence in their answers is the signal.</p>
-          <p>Pre-execution inline verification gate for agentic AI. Intercepts every tool invocation before it fires. A multi-model adversarial panel — three independent Tier-1 reasoning models evaluate each artifact in parallel. One dissent halts the chain. Fail-closed on divergence is the primary safety invariant.</p>
+          <h3>AaaS — The Arbiter's Inline Implementation</h3>
+          <p class="product-hook">The Arbiter poses a first-principles reasoning question to independent models. The divergence in their answers is the signal. AaaS deploys The Arbiter as a pre-execution verification gate for agentic AI systems.</p>
+          <p>Pre-execution inline verification gate for agentic AI. Intercepts every tool invocation before it fires. The Arbiter's multi-model adversarial panel — three independent Tier-1 reasoning models evaluate each artifact in parallel. One dissent halts the chain. Fail-closed on divergence is the primary safety invariant.</p>
           <ul class="product-features">
             <li>Sequence panel detects multi-hop attack chains invisible to per-artifact inspection</li>
             <li>Blocked all 6 chain variants: credential harvest, data exfiltration, privilege escalation, RAG poisoning, supply-chain substitution, persistent backdoor</li>
@@ -470,12 +470,12 @@
           </ul>
         </div>
 
-        <!-- SCS -->
+        <!-- SCS — The Arbiter Implementation -->
         <div class="product-card primary">
           <span class="product-tag">SCS · Patent Pending</span>
-          <h3>Subject Confirmation System</h3>
-          <p class="product-hook">Fraud tools score the transaction. SCS proves a confirmed human authorized it.</p>
-          <p>Pre-action cryptographic gate that enforces the silent-release prohibition across any domain where an irreversible action requires confirmed human authorization. Three-party Ed25519 binding. Vertical-agnostic — the same architecture that closes the agentic AI gate deploys directly into financial services, healthcare, legal, and OT.</p>
+          <h3>SCS — The Arbiter's Authorization Gate</h3>
+          <p class="product-hook">Fraud tools score the transaction. SCS proves a confirmed human authorized it — applying The Arbiter's principle of independent verification to authorization binding.</p>
+          <p>Pre-action cryptographic gate that enforces the silent-release prohibition across any domain where an irreversible action requires confirmed human authorization. Three-party Ed25519 binding. Vertical-agnostic — The Arbiter's multi-model divergence principle extends across financial services, healthcare, legal, and OT.</p>
           <ul class="product-features">
             <li>Silent-release prohibition: no action executes without a confirmed cryptographic token</li>
             <li>Three-party Ed25519 binding — operator, subject, and system all sign</li>
@@ -531,17 +531,17 @@
     </div>
   </section>
 
-  <!-- ADDITIONAL IP -->
+  <!-- THE ARBITER VERTICALS -->
   <section>
     <div class="section-inner">
-      <p class="section-label">Additional IP</p>
-      <h2 class="section-title">The Arbiter</h2>
+      <p class="section-label">The Arbiter Across Verticals</p>
+      <h2 class="section-title">The Arbiter Technology Deployments</h2>
       <div class="product-grid">
         <div class="product-card">
           <span class="product-tag">TA · Patent Pending</span>
-          <h3>Multi-Model Document Analysis</h3>
+          <h3>TA Financial — The Arbiter for Document Analysis</h3>
           <p class="product-hook">The divergence map is the output. Nothing else does this today.</p>
-          <p>A single AI model reviewing a document cannot detect its own hallucinations. The Arbiter runs independent adversarial models against the same document and outputs the divergence — the disagreement between models is the signal, not noise to be filtered.</p>
+          <p>A single AI model reviewing a document cannot detect its own hallucinations. The Arbiter runs independent adversarial models against the same document and outputs the divergence — the disagreement between models is the signal, not noise to be filtered. TA Financial applies this to regulatory and compliance document verification.</p>
           <ul class="product-features">
             <li>Independent model families run blind to each other against every document</li>
             <li>Output graded per claim — verified, contested, or unverifiable</li>
@@ -558,25 +558,25 @@
   <!-- VERTICALS -->
   <section class="verticals">
     <div class="section-inner">
-      <p class="section-label">Target Markets</p>
-      <h2 class="section-title">One architecture. Multiple verticals.</h2>
-      <p class="section-lead">AaaS owns the agentic AI threat surface. SCS deploys independently wherever an irreversible action requires confirmed human authorization before execution.</p>
+      <p class="section-label">The Arbiter Applications</p>
+      <h2 class="section-title">One technology. Multiple implementations.</h2>
+      <p class="section-lead">The Arbiter is deployed across verticals. AaaS applies The Arbiter to agentic AI threat detection. SCS applies The Arbiter's independent verification principle to authorization binding across all domains requiring human confirmation before irreversible action.</p>
       <div class="vertical-grid">
         <div class="vertical-card">
-          <h4>Agentic AI</h4>
-          <p>AaaS + SCS integrated. The only IP-protected pre-execution gate that blocks multi-hop chain attacks invisible to per-artifact tools. Closes both the threat detection and authorization binding surfaces simultaneously.</p>
+          <h4>Agentic AI — AaaS</h4>
+          <p>AaaS deploys The Arbiter as an inline pre-execution gate for agent systems. Detects multi-hop chain attacks invisible to per-artifact tools. Closes both the threat detection and authorization binding surfaces simultaneously. AaaS + SCS integrated.</p>
         </div>
         <div class="vertical-card">
-          <h4>Financial Services</h4>
-          <p>SCS as cryptographic step-up for CNP fraud, wire and ACH release, account takeover prevention, and high-value transaction authorization. Fraud tools score. SCS proves.</p>
+          <h4>Financial Services — SCS</h4>
+          <p>SCS applies The Arbiter's independent verification principle as cryptographic step-up for CNP fraud, wire and ACH release, account takeover prevention, and high-value transaction authorization. Fraud tools score. SCS proves.</p>
         </div>
         <div class="vertical-card">
-          <h4>Healthcare</h4>
-          <p>Cryptographic confirmation before clinical decisions execute — medication dispensing, procedure authorization, record amendment. Demonstrable authorization chain for regulatory and liability purposes.</p>
+          <h4>Healthcare — SCS</h4>
+          <p>SCS deploys The Arbiter's authorization principle before clinical decisions execute — medication dispensing, procedure authorization, record amendment. Demonstrable authorization chain for regulatory and liability purposes.</p>
         </div>
         <div class="vertical-card">
-          <h4>Legal · Compliance · OT</h4>
-          <p>Contract execution, regulatory filing, and industrial control system commands share one requirement: cryptographic proof that a confirmed human authorized the specific action before it fired.</p>
+          <h4>Legal · Compliance · OT — SCS</h4>
+          <p>Contract execution, regulatory filing, and industrial control system commands apply The Arbiter's principle: cryptographic proof that a confirmed human authorized the specific action before it fired.</p>
         </div>
       </div>
     </div>
@@ -602,7 +602,7 @@
         <div class="why-now">
           <h3>Why now.</h3>
           <p>Agentic AI deployment is accelerating across enterprise, financial services, and healthcare. The regulatory and liability environment around autonomous AI action is hardening.</p>
-          <p>The incidents that make this IP necessary are no longer hypothetical — PocketOS deleted a production volume in 9 seconds, Replit lost a production database, Google Gemini CLI destroyed files from a hallucinated world-state. AaaS has blocked reconstructed artifacts from all three. The attack surface is real and confirmed.</p>
+          <p>The incidents that make this IP necessary are no longer hypothetical — PocketOS deleted a production volume in 9 seconds, Replit lost a production database, Google Gemini CLI destroyed files from a hallucinated world-state. The Arbiter, deployed via AaaS, has blocked reconstructed artifacts from all three. The attack surface is real and confirmed.</p>
           <p>The window to own the pre-execution standard before it is written by committee is measured in months, not years.</p>
         </div>
       </div>
