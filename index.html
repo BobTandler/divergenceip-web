@@ -364,7 +364,10 @@
   <!-- NAV -->
   <nav>
     <a href="https://divergenceip.com/" class="nav-logo">Divergence<span>IP</span></a>
-    <a href="mailto:bobtandler@divergenceip.com" class="nav-contact">Get in touch</a>
+    <div style="display: flex; gap: 20px; align-items: center;">
+      <a href="/undeclared-chain" style="font-size: 14px; color: #888899; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#F0F0F4'" onmouseout="this.style.color='#888899'">Undeclared Chains</a>
+      <a href="mailto:bobtandler@divergenceip.com" class="nav-contact">Get in touch</a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -387,8 +390,30 @@
       <li>Multi-model adversarial panel — one dissent halts the chain before the irreversible action executes</li>
       <li>Once flagged, a human has the final say — BLOCK or ALLOW. That decision is cryptographically bound by three-party Ed25519 signature. No token, no release.</li>
       <li><strong>AaaS is the only system that detects multi-hop chain attacks — where no single hop is malicious, but the aggregate sequence is.</strong></li>
-      <li><strong>PocketOS, Replit, Google Gemini CLI — autonomous agents causing real destruction with no gate. AaaS has stopped 100% of all threats tested.</strong></li>
+      <li><strong>PocketOS, Replit, Google Gemini CLI — autonomous agents causing real destruction with no gate. AaaS has stopped 100% of all threats tested — single-artifact threats via the pre-execution panel, multi-hop chains via sequence evaluation.</strong></li>
     </ul>
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Block rate on 355-artifact run — zero escapes</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">44/44</div>
+        <div class="stat-label">Adversarial artifacts blocked — Certified July 2, 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">7/7</div>
+        <div class="stat-label">Declared chains caught — Certified July 2, 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">45/45</div>
+        <div class="stat-label">Undeclared chains captured by observation-derived inference — live-validated</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">12</div>
+        <div class="stat-label">Divergent chains correctly routed to human review</div>
+      </div>
+    </div>
   </section>
 
   <!-- WHAT WE DO -->
@@ -440,8 +465,8 @@
             <li>Sequence panel detects multi-hop attack chains invisible to per-artifact inspection</li>
             <li>Blocked all 6 chain variants: credential harvest, data exfiltration, privilege escalation, RAG poisoning, supply-chain substitution, persistent backdoor</li>
             <li>Egress policy layer enforces destination-based controls independent of payload semantics</li>
-            <li>Human-in-the-loop applied selectively — 96.3% of artifacts clear without operator touch</li>
-            <li>Validated: 38/38 designed-block recall across 347-artifact MITRE ATLAS benchmark</li>
+            <li>Certified July 2, 2026: 100% block rate on 355-artifact run — 44/44 adversarial artifacts blocked, 7/7 declared chains caught</li>
+            <li>Live-validated: 45/45 undeclared chains captured by observation-derived inference, with 12 divergent chains correctly routed to human review</li>
           </ul>
         </div>
 
@@ -466,41 +491,41 @@
   <!-- VALIDATION -->
   <section class="validation">
     <div class="section-inner">
-      <p class="section-label">Validated Performance</p>
-      <h2 class="section-title">MITRE ATLAS benchmark — 347 artifacts.</h2>
-      <p class="section-lead">AaaS validated against the authoritative adversarial AI threat framework. 347-artifact corpus spanning read-only operations, standard deployment sequences, and adversarial threats at realistic intervals — including reconstructed real-world incidents. Benign operational traffic correctly allowed. Adversarial threats blocked.</p>
+      <p class="section-label">Certified Performance</p>
+      <h2 class="section-title">July 2, 2026 — 355-artifact certification run.</h2>
+      <p class="section-lead">AaaS validated across live commercial model carriers. 355-artifact corpus spanning read-only operations, standard deployment sequences, and adversarial threats at realistic intervals — including reconstructed real-world incidents. Zero escapes. Sub-second median latency. Fractions of a cent per action.</p>
       <div class="stat-grid">
         <div class="stat-cell">
-          <div class="stat-value">347</div>
-          <div class="stat-label">Artifact benchmark corpus</div>
+          <div class="stat-value">355</div>
+          <div class="stat-label">Total artifact run — live commercial model carriers</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">38/38</div>
-          <div class="stat-label">Designed-block recall — zero escapes</div>
+          <div class="stat-value">44/44</div>
+          <div class="stat-label">Adversarial artifacts blocked — Certified July 2, 2026</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">15</div>
-          <div class="stat-label">Individual MITRE ATLAS threat scenarios</div>
+          <div class="stat-value">7/7</div>
+          <div class="stat-label">Declared chains caught — Certified July 2, 2026</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">6/6</div>
-          <div class="stat-label">Multi-hop chain attacks blocked — 3, 4, and 5-hop variants tested</div>
+          <div class="stat-value">45/45</div>
+          <div class="stat-label">Undeclared chains captured by observation-derived inference</div>
         </div>
         <div class="stat-cell">
           <div class="stat-value">12</div>
-          <div class="stat-label">Distinct ATLAS techniques covered</div>
+          <div class="stat-label">Divergent chains correctly routed to human review</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">883ms</div>
-          <div class="stat-label">Panel p50 latency — 3-carrier strict-unanimity panel</div>
+          <div class="stat-value">&lt;1s</div>
+          <div class="stat-label">Sub-second median latency — panel evaluation</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">$0.0044</div>
-          <div class="stat-label">Cost per artifact at production throughput</div>
+          <div class="stat-value">¢&lt;1</div>
+          <div class="stat-label">Fractions of a cent per action at production throughput</div>
         </div>
         <div class="stat-cell">
           <div class="stat-value">100%</div>
-          <div class="stat-label">Flagged artifacts routed to human-in-the-loop review</div>
+          <div class="stat-label">Block rate — zero escapes</div>
         </div>
       </div>
     </div>

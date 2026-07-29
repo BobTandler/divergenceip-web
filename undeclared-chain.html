@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catching the Agent Attack Nobody Declares — Divergence IP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0A0A0F;
+      --bg2:      #111118;
+      --bg3:      #16161F;
+      --mint:     #4FFFB0;
+      --mint-dim: rgba(79,255,176,0.12);
+      --mint-mid: rgba(79,255,176,0.25);
+      --white:    #F0F0F4;
+      --muted:    #888899;
+      --border:   rgba(255,255,255,0.07);
+      --radius:   12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 18px;
+      color: var(--white); text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: var(--mint); }
+    .nav-links {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .nav-links a {
+      font-size: 14px; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--mint); }
+    .nav-contact {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; font-weight: 600;
+      color: var(--bg);
+      background: var(--mint);
+      padding: 8px 20px; border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-contact:hover { opacity: 0.85; }
+
+    /* ── ARTICLE ── */
+    article {
+      max-width: 720px; margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+    article h1 {
+      font-size: 52px; font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 32px; margin-top: 0;
+      line-height: 1.1;
+    }
+    article p {
+      font-size: 16px; line-height: 1.8;
+      color: var(--muted); margin-bottom: 24px;
+    }
+    article p strong { color: var(--white); font-weight: 500; }
+    article .date {
+      font-size: 13px; color: var(--mint);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 48px;
+    }
+    article .stat-block {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-left: 3px solid var(--mint);
+      border-radius: var(--radius);
+      padding: 32px 28px; margin: 48px 0;
+      font-size: 16px; line-height: 1.7; color: var(--muted);
+    }
+    article .stat-block .label {
+      font-size: 13px; color: var(--mint);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    article .stat-row {
+      display: flex; gap: 16px; margin: 8px 0;
+    }
+    article .stat-row strong {
+      color: var(--white); font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--mint); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      article { padding: 120px 20px 60px; }
+      article h1 { font-size: 36px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://divergenceip.com/" class="nav-logo">Divergence<span>IP</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#products" class="active">Products</a>
+    </div>
+    <a href="mailto:robert@divergenceip.com" class="nav-contact">Get in touch</a>
+  </nav>
+
+  <!-- ARTICLE -->
+  <article>
+    <h1>Catching the Agent Attack Nobody Declares</h1>
+    <p class="date">July 2, 2026</p>
+
+    <p>In November 2025, a frontier AI lab documented an agent decomposing a malicious task into individually innocuous steps — each action benign on its own, the harm existing only in the chain. Every headline agent incident since fits the same shape: the dangerous step looks ordinary, because the danger lives in what came before it.</p>
+
+    <p>Most agent-security products handle this only when the allowed path is declared in advance. Declare the trajectory, seal it, check against it at runtime. That works — until nothing is declared, which is how real agent deployments actually run. Undeclared chains fall through to pattern heuristics: rules that catch the attack shapes someone anticipated and miss the ones nobody did.</p>
+
+    <p>AaaS by Divergence IP takes a different path. It reconstructs chain membership from observation — no declaration required, anywhere. A panel of independent AI models judges every agent action before execution, and a single dissenting model halts it. No model is ever the arbiter of its own work. When the panel diverges, that divergence is preserved and routed to a human — not averaged away.</p>
+
+    <div class="stat-block">
+      <div class="label">The numbers, from tagged runs:</div>
+      <div class="stat-row"><strong>Certified July 2, 2026:</strong> 100% block rate — 44/44 adversarial artifacts blocked, 7/7 declared chains caught — across a 355-artifact run on live commercial model carriers. Zero escapes. Sub-second median latency, fractions of a cent per action.</div>
+      <div class="stat-row"><strong>Live-validated:</strong> 45/45 undeclared chains captured by observation-derived inference, with 12 divergent chains correctly routed to human review.</div>
+    </div>
+
+    <p>Amazon's dashboards once showed sub-minute hold times while Jeff Bezos sat on hold for ten. When a system grades its own homework, the grade is suspect. A single model verifying its own actions is that dashboard. Independent adversarial verification is picking up the phone.</p>
+
+    <p>The architecture is covered by a five-application patent portfolio filed March–June 2026.</p>
+
+    <p><strong>Contact:</strong> robert@divergenceip.com</p>
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Divergence IP LLC</span>
+    <span>© 2026 Divergence IP LLC · All rights reserved · Patent Pending</span>
+  </footer>
+
+</body>
+</html>
