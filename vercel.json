@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/matrix", "destination": "/matrix.html" }
+    { "source": "/matrix", "destination": "/matrix.html" },
+    { "source": "/undeclared-chain", "destination": "/undeclared-chain.html" }
   ]
 }
