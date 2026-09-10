@@ -1,0 +1,8 @@
+
+
+# Key material never enters git. The signing key lives outside every repository
+# tree (C:/IP/_keys), but the key path is a config value, so a deployment could
+# point it anywhere — these rules mean this repo would refuse it.
+*.pem
+*.key
+*_private*
